@@ -33,4 +33,8 @@ jobs:
     - name: Firebase Deploy
       if: steps.firebasetools.status == success()
       run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+    - name: Dump steps context
+      env:
+        STEPS_CONTEXT: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT"
 
