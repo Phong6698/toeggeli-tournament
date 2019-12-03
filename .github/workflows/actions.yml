@@ -14,17 +14,23 @@ jobs:
       with:
         node-version: '12'
     - name: Install Dependencies
+      id: dependencies
       run: |
         npm ci --prefix web
         npm ci --prefix functions
-    - name: Build Angular
+    - name: Build
+      id: builds
+      if: steps.dependencies.status == success()
       run: |
+        npm run lint --prefix web
+        npm run lint --prefix functions
         npm run prebuild --prefix web
         npm run build.prod --prefix web
     - name: Install Firebase Tools
-      if: steps == success()
+      id: firebasetools
+      if: steps.builds.status == success()
       run: npm install -g firebase-tools 
     - name: Firebase Deploy
-      if: steps == success()
+      if: steps.firebasetools.status == success()
       run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
 
