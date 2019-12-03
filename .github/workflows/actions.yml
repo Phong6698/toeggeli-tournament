@@ -16,13 +16,11 @@ jobs:
         node-version: '12'
         
     - name: Install Dependencies
-      id: dependencies
       run: |
         npm ci --prefix web
         npm ci --prefix functions
         
     - name: Build
-      id: builds
       if: success()
       run: |
         npm run lint --prefix web
@@ -31,19 +29,13 @@ jobs:
         npm run build.prod --prefix web
         
     - name: Install Firebase Tools
-      id: firebasetools
       if: success()
       run: |
         npm install -g firebase-tools 
         
     - name: Firebase Deploy
-      id: deploy
       if: success()
       run: |
-        firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+        firebase deploy --token ${{ secrets.FIREBASE_TOKEN }} -m "$GITHUB_SHA"
         
-    - name: Dump steps context
-      env:
-        STEPS_CONTEXT: ${{ toJson(steps) }}
-      run: echo "$STEPS_CONTEXT"
 
