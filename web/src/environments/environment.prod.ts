@@ -1,3 +1,6 @@
+import {versionLong} from '../_versions';
+
 export const environment = {
-  production: true
+  production: true,
+  version: versionLong
 };
