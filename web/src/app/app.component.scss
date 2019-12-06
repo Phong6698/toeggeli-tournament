@@ -1,0 +1,21 @@
+.side-nav.width-auto {
+  width: 70%;
+}
+
+.side-nav.width-fixed {
+  width: 300px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  // height: 100%; FIXME Logout Button on bottom
+}
+
+.label {
+  margin-left: 0.5em;
+}
+
+.menu-button:focus {
+  outline: none !important;
+}
