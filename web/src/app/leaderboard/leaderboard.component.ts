@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Statistic, ToeggeliTournamentService} from '../toeggeli-tournament.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-leaderboard',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaderboardComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns: string[] = ['rank', 'teamName', 'wins', 'losses', 'goalDifference'];
+  statistics$: Observable<Statistic[]>;
+
+  constructor(private toeggeliTournamentService: ToeggeliTournamentService) { }
 
   ngOnInit() {
+    this.statistics$ = this.toeggeliTournamentService.getStatistics();
   }
 
 }
