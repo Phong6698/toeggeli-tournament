@@ -1,11 +1,11 @@
 <mat-sidenav-container fullscreen (panRight)="sidenav.open()" (panLeft)="sidenav.close()">
   <mat-sidenav #sidenav [mode]="sideNavMode" role="navigation" class="side-nav" [ngClass]="sideNavWidthClass">
     <mat-nav-list class="list">
-      <a mat-list-item routerLink="/leaderboard">
+      <a mat-list-item routerLink="/leaderboard" (click)="sideNavMode === 'push' ? sidenav.close() : null">
         <mat-icon class="icon">list</mat-icon>
         <span class="label">Scoreboard</span>
       </a>
-      <a mat-list-item routerLink="/match-history">
+      <a mat-list-item routerLink="/match-history" (click)="sideNavMode === 'push' ? sidenav.close() : null">
         <mat-icon class="icon">history</mat-icon>
         <span class="label">Match History</span>
       </a>
@@ -17,7 +17,7 @@
       <button mat-icon-button class="menu-button" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Töggeli</span>
+      <span>Weihnachts-Töggeli Turnier</span>
     </mat-toolbar>
     <main class="container">
       <router-outlet></router-outlet>
