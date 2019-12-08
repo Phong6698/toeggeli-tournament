@@ -10,7 +10,7 @@ export const helloWorld = functions.https.onRequest((request, response) => {
 
 
 export const updateStatistics = functions.region('europe-west1')
-    .firestore.document('Matches').onCreate(snapshot => {
+    .firestore.document('Matches/{matchID}').onCreate(snapshot => {
         const createdMatch: any = snapshot.data();
         return admin.firestore().runTransaction(async transaction => {
             try {
