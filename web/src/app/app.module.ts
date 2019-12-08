@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -11,12 +11,17 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
-import { LeaderboardComponent } from './leaderboard/leaderboard.component';
-import { MatchHistoryComponent } from './match-history/match-history.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
+import {LeaderboardComponent} from './leaderboard/leaderboard.component';
+import {MatchHistoryComponent} from './match-history/match-history.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {MatCardModule} from '@angular/material/card';
+import {registerLocaleData} from '@angular/common';
+import localeDECH from '@angular/common/locales/de-CH';
+
+registerLocaleData(localeDECH);
 
 @NgModule({
   declarations: [
@@ -37,9 +42,10 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatCardModule
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'de-ch'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

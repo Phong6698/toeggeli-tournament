@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Match, ToeggeliTournamentService} from '../toeggeli-tournament.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-match-history',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchHistoryComponent implements OnInit {
 
-  constructor() { }
+  matches$: Observable<Match[]>;
+
+  constructor(private toeggeliTournamentService: ToeggeliTournamentService) {
+  }
 
   ngOnInit() {
+    this.matches$ = this.toeggeliTournamentService.getMatchHistory();
   }
 
 }
