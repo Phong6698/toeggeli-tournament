@@ -20,6 +20,8 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {MatCardModule} from '@angular/material/card';
 import {registerLocaleData} from '@angular/common';
 import localeDECH from '@angular/common/locales/de-CH';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 registerLocaleData(localeDECH);
 
@@ -32,6 +34,7 @@ registerLocaleData(localeDECH);
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     BrowserAnimationsModule,
@@ -43,7 +46,8 @@ registerLocaleData(localeDECH);
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'de-ch'}],
   bootstrap: [AppComponent]
