@@ -1,0 +1,21 @@
+<div *ngFor="let round of rounds$ | async" class="m-4">
+  <h4>Round {{round.round}}</h4>
+
+  <mat-card *ngFor="let match of round.matches" class="mat-elevation-z4 m-4 pt-5 pb-5">
+    <div class="grid">
+      <button mat-raised-button class="team1-button team-blue-player1">{{match.team1}}</button>
+      <div *ngIf="match.played" class="score-grid text-center">
+        <p class="team1-score text-center m-0"
+           [ngClass]="{'winner-score' : match.team1Score === 10}">{{match.team1Score}}</p>
+        <p class="score-divider text-center m-0">:</p>
+        <p class="team2-score text-center m-0"
+           [ngClass]="{'winner-score' : match.team2Score === 10}">{{match.team2Score}}</p>
+      </div>
+      <span *ngIf="!match.played" class="not-played-yet text-center">
+        Not played yet
+      </span>
+      <button mat-raised-button class="team2-button team-red-player1">{{match.team2}}</button>
+    </div>
+  </mat-card>
+</div>
+

@@ -5,6 +5,10 @@
         <mat-icon class="icon">list</mat-icon>
         <span class="label">Scoreboard</span>
       </a>
+      <a mat-list-item routerLink="/rounds" (click)="sideNavMode === 'push' ? sidenav.close() : null">
+        <mat-icon class="icon">schedule</mat-icon>
+        <span class="label">Rounds</span>
+      </a>
       <a mat-list-item routerLink="/match-history" (click)="sideNavMode === 'push' ? sidenav.close() : null">
         <mat-icon class="icon">history</mat-icon>
         <span class="label">Match History</span>
