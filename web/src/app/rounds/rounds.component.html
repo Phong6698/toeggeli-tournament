@@ -1,7 +1,7 @@
-<div *ngFor="let round of rounds$ | async" class="m-4">
+<div *ngFor="let round of rounds$ | async" class="m-4 mt-5">
   <h4>Round {{round.round}}</h4>
 
-  <mat-card *ngFor="let match of round.matches" class="mat-elevation-z4 m-4 pt-5 pb-5">
+  <mat-card *ngFor="let match of round.matches" class="mat-elevation-z4 mt-4 pt-5 pb-5">
     <div class="grid">
       <button mat-raised-button class="team1-button team-blue-player1">{{match.team1}}</button>
       <div *ngIf="match.played" class="score-grid text-center">
