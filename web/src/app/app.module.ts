@@ -22,7 +22,8 @@ import {registerLocaleData} from '@angular/common';
 import localeDECH from '@angular/common/locales/de-CH';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { RoundsComponent } from './rounds/rounds.component';
+import {RoundsComponent} from './rounds/rounds.component';
+import {RoundMatchesComponent} from './round-matches/round-matches.component';
 
 registerLocaleData(localeDECH);
 
@@ -31,7 +32,8 @@ registerLocaleData(localeDECH);
     AppComponent,
     LeaderboardComponent,
     MatchHistoryComponent,
-    RoundsComponent
+    RoundsComponent,
+    RoundMatchesComponent
   ],
   imports: [
     BrowserModule,

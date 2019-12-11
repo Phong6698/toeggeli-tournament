@@ -30,6 +30,11 @@ export class ToeggeliTournamentService {
   getRounds(): Observable<Round[]> {
     return this.angularFirestore.collection('Rounds').valueChanges() as Observable<Round[]>;
   }
+
+  getRoundMatchesByRound(round: number): Observable<RoundMatch[]> {
+    return this.angularFirestore.collection('Rounds').doc(round.toString())
+      .collection('RoundMatches').valueChanges() as Observable<RoundMatch[]>;
+  }
 }
 
 export interface Statistic {
@@ -50,14 +55,14 @@ export interface Match {
 }
 
 export interface Round {
-  matches: [
-    {
-      team1: string;
-      team2: string;
-      played: boolean;
-      team1Score?: number;
-      team2Score?: number;
-    }
-  ];
   round: number;
+}
+
+export interface RoundMatch {
+  team1: string;
+  team2: string;
+  played: boolean;
+  team1Score?: number;
+  team2Score?: number;
+  timestamp?: firebase.firestore.Timestamp;
 }
